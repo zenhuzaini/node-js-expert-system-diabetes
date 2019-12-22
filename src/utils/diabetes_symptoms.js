@@ -67,6 +67,10 @@ const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, 
             s10: s10,
         },
         result: {
+            symptom_result: {
+                status: '',
+                message: ''
+            },
             parent_risk: {
                 status: '',
                 message: ''
@@ -81,7 +85,8 @@ const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, 
                     status: '',
                     message: ''
                 }
-            }
+            },
+            final_result: ''
         }
     }
 
