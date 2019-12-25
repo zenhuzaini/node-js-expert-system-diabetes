@@ -1,5 +1,7 @@
 # node-js-expert-system-diabetes
 Expert System Diabetes Using Node.js
+This expert system is develeoped using node.js and module used is Rools.
+Rools is a rule engine library that can be used for expert system
 
 Module used = Rools -> https://www.npmjs.com/package/rools
 
@@ -48,12 +50,12 @@ probability of having diabetic.
 
 
 Calculation
-For calculation purposes (to get the precentage)
-Each aspects has maximum score of 25 
+- For calculation purposes (to get the precentage)
+- Each aspects has maximum score of 25 
 
 This expert system is created based on these resources :
-https://www.alodokter.com/diabetes
-https://hellosehat.com/pusat-kesehatan/diabetes-kencing-manis/serba-serbi-pemeriksaan-diabetes-di-rumah/
-https://www.id.wikihow.com/Mengetahui-Apakah-Anda-Menderita-Diabetes
-https://www.webmd.com/diabetes/how-sugar-affects-diabetes#1
-https://www.webmd.com/diabetes/diagnosing-type-2-diabetes#1
+- https://www.alodokter.com/diabetes
+- https://hellosehat.com/pusat-kesehatan/diabetes-kencing-manis/serba-serbi-pemeriksaan-diabetes-di-rumah/
+- https://www.id.wikihow.com/Mengetahui-Apakah-Anda-Menderita-Diabetes
+- https://www.webmd.com/diabetes/how-sugar-affects-diabetes#1
+- https://www.webmd.com/diabetes/diagnosing-type-2-diabetes#1
