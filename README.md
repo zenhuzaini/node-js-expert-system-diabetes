@@ -12,16 +12,17 @@ This expert system is built for detecting Diabetes based on these 4 aspects
 
 Explanation of each aspects
 1. Symptoms
-    1 always feeling thirsty
-    2 Urination, especially during the night
-    3 Often feeling hunger
-    4 Weight loss with no reason
-    5 Loss of muscle mass
-    6 There is Keton in urine
-    7 Weak --> lemas(indonesian)
-    8 Problem with sight Pandangan kabur.
-    9 scars take long time to heal
-    10 often get infected. For example in gusi, kulit, vagina, atau saluran kemih.
+    - always feeling thirsty
+    - Urination, especially during the night
+    - Often feeling hunger
+    - Weight loss with no reason
+    - Loss of muscle mass
+    - There is Keton in urine
+    - Weak --> lemas(indonesian)
+    - Problem with sight Pandangan kabur.
+    - scars take long time to heal
+    -  often get infected. For example in gusi, kulit, vagina, atau saluran kemih.
+ 
  According to the resource, A person can be identified as having diabetic if has >= 2 symptoms
 
 2. Diabetic parent
@@ -33,17 +34,17 @@ probability of having diabetic.
  - This fasting is only FOR NOT EATING food or drink something containing energy or sugar
  - Drink pure water is allowed
 
- According this medical test here are the criteria
-    Kadar gula darah normal: di bawah 100 mg/dL
-    Pradiabetes: 100-125 mg/dL
-    Diabetes di atas 125 mg/dL
+ - According this medical test here are the criteria
+    - Kadar gula darah normal: di bawah 100 mg/dL
+    - Pradiabetes: 100-125 mg/dL
+    - Diabetes di atas 125 mg/dL
 
 4. gtwo hour
 - a test that is taken 2 hours after the last eating.
- According this medical test here are the critera
-    Kadar gula darah normal: di bawah 140 mg/dL
-    Pradiabetes: 140-199 mg/dL
-    Diabetes: lebih dari 200 mg/ dL
+- According this medical test here are the critera
+    - Kadar gula darah normal: di bawah 140 mg/dL
+    - Pradiabetes: 140-199 mg/dL
+    - Diabetes: lebih dari 200 mg/ dL
 
 
 Calculation
