@@ -10,45 +10,8 @@
 // s9 Luka yang sulit sembuh.
 // s10 Sering mengalami infeksi, misalnya pada gusi, kulit, vagina, atau saluran kemih.
 
-var parameters = {
-    hasDiabetesParent: false,
-    medtest: {
-        fpg: '', //fasting plasma glucose 8 hours
-        gthae: '' //glucose two hours after eating
-    },
-    symptoms: {
-        s1: false, //thirsty
-        s2: false, // urination
-        s3: false, // feeling always hungsy
-        s4: false, // loss weight with no clear reason
-        s5: false, //loss muscle mass
-        s6: false, // there is keton in Urine
-        s7: false, // lemas 
-        s8: false, //sight problem
-        s9: false, // scars is long to heal
-        s10: false, // often get infected in vagina
-    },
-    result: {
-        parent_risk: {
-            status: '',
-            message: ''
-        },
-        test_result: {
-            fpg: {
-                status: 'fb',
-                message: 'db'
-            },
-            gthae: {
-                status: '',
-                message: ''
-            }
-        }
-
-    }
-}
-
 const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, callback) => {
-    parameters = {
+    let parameters = {
         hasDiabetesParent: hasDiabetesParent,
         medtest: {
             fpg: fpg, //fasting plasma glucose
@@ -69,52 +32,31 @@ const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, 
         result: {
             symptom_result: {
                 status: '',
-                message: ''
+                message: '',
+                score: ''
             },
             parent_risk: {
                 status: '',
-                message: ''
+                message: '',
+                score: ''
             },
 
             test_result: {
                 fpg: {
                     status: '',
-                    message: ''
+                    message: '',
+                    score: ''
                 },
                 gthae: {
                     status: '',
-                    message: ''
+                    message: '',
+                    score: ''
                 }
             },
-            final_result: ''
+            final_result: '',
+            percentage: ''
         }
     }
-
-    // parameters = {
-    //         hasDiabetesParent: hasDiabetesParent,
-    //         hyperglycemic_risk: hyperglycemic_risk,
-    //         s1: s1,
-    //         s2: s2,
-    //         s3: s3,
-    //         s4: s4,
-    //         s5: s5,
-    //         s6: s6,
-    //         s7: s7,
-    //         s8: s8,
-    //         s9: s9,
-    //         s10: s10,
-    //         result: {
-    //             parent_risk: {
-    //                 status: '',
-    //                 message: ''
-    //             },
-    //             hyperglycemic_risk: {
-    //                 status: '',
-    //                 message: ''
-    //             },
-
-    //         }
-    //     }
 
     return callback(parameters)
 }

@@ -3,46 +3,56 @@ Expert System Diabetes Using Node.js
 
 Module used = Rools -> https://www.npmjs.com/package/rools
 
-This expert system is built for detecting Diabetes based on 10 symptoms and 2 medical tests.
+This expert system is built for detecting Diabetes based on these 4 aspects
+1. Symtoms -> there are 10 symptoms and 2 medical tests.
+2. Checking wheter parents have diabetic history
+3. Medical Test Fasting  , here we cal it 'FPG'
+4. Medical fasting  Two Hour After Fasting, here we call it GTHAE
 
-//Symptoms
-...
-Sering merasa haus.
-Sering buang air kecil, terutama di malam hari.
-Sering merasa sangat lapar.
-Turunnya berat badan tanpa sebab yang jelas.
-Berkurangnya massa otot.
-Terdapat keton dalam urine. Keton adalah produk sisa dari pemecahan otot dan lemak akibat tubuh tidak dapat menggunakan gula sebagai sumber energi.
-Lemas.
-Pandangan kabur.
-Luka yang sulit sembuh.
-Sering mengalami infeksi, misalnya pada gusi, kulit, vagina, atau saluran kemih.
 
-//Medical Tests
-...
-1. Gula darah puasa (GDP)
-Cek gula darah puasa dilakukan setelah Anda berpuasa selama 8 jam. Puasa ini khusus puasa makan dan minum-minuman mengandung energi atau gula. Yang hanya diperbolehkan hanya minum air putih. Berikut ini kriteria kadar gula darah normal berdasarkan tes GDP:
+Explanation of each aspects
+1. Symptoms
+    1 always feeling thirsty
+    2 Urination, especially during the night
+    3 Often feeling hunger
+    4 Weight loss with no reason
+    5 Loss of muscle mass
+    6 There is Keton in urine
+    7 Weak --> lemas(indonesian)
+    8 Problem with sight Pandangan kabur.
+    9 scars take long time to heal
+    10 often get infected. For example in gusi, kulit, vagina, atau saluran kemih.
+ According to the resource, A person can be identified as having diabetic if has >= 2 symptoms
 
-Kadar gula darah normal: di bawah 100 mg/dL
-Pradiabetes: 100-125 mg/dL
-Diabetes di atas 125 mg/dL
+2. Diabetic parent
+According to the reasearch, if a person has parent with diabetic it can give more
+probability of having diabetic.
 
-2. Gula darah 2 jam postprandial (GD2PP)
-Pada tes kali ini akan dilakukan 2 jam setelah Anda makan terakhir. Tes ini dilakukan untuk melihat apakah orang dengan diabetes mengonsumsi makanan yang tepat atau tidak. Berikut ini kriteria kadar gula darah normal dari tes GD2PP:
+3. Fasting after 8 hours
+ - This test is kind of medical test that is done after fasting for 8 hours. 
+ - This fasting is only FOR NOT EATING food or drink something containing energy or sugar
+ - Drink pure water is allowed
 
-Kadar gula darah normal: di bawah 140 mg/dL
-Pradiabetes: 140-199 mg/dL
-Diabetes: lebih dari 200 mg/ dL
+ According this medical test here are the criteria
+    Kadar gula darah normal: di bawah 100 mg/dL
+    Pradiabetes: 100-125 mg/dL
+    Diabetes di atas 125 mg/dL
 
-//Rules
+4. gtwo hour
+- a test that is taken 2 hours after the last eating.
+ According this medical test here are the critera
+    Kadar gula darah normal: di bawah 140 mg/dL
+    Pradiabetes: 140-199 mg/dL
+    Diabetes: lebih dari 200 mg/ dL
 
+
+Calculation
+For calculation purposes (to get the precentage)
+Each aspects has maximum score of 25 
 
 This expert system is created based on these resources :
-
-Resources:
 https://www.alodokter.com/diabetes
 https://hellosehat.com/pusat-kesehatan/diabetes-kencing-manis/serba-serbi-pemeriksaan-diabetes-di-rumah/
 https://www.id.wikihow.com/Mengetahui-Apakah-Anda-Menderita-Diabetes
 https://www.webmd.com/diabetes/how-sugar-affects-diabetes#1
 https://www.webmd.com/diabetes/diagnosing-type-2-diabetes#1
-

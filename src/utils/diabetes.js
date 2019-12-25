@@ -2,20 +2,15 @@ const { Rule, Rools } = require('rools')
 const symptoms = require('./diabetes_symptoms')
 
 //get the values
-const facts = symptoms.setSymptoms(true, 300, 400, true, true, true, true, true, false, true, true, true, true, (res) => {
+const facts = symptoms.setSymptoms(false, 300, 400, true, false, false, false, false, false, false, false, false, false, (res) => {
     return res
 });
 
-//get the true values
+//get the true values from symptom value
 const obj_symptoms = Object.values(facts.symptoms);
 const isTrue = obj_symptoms.filter((values) => {
     return values == true
 })
-
-
-console.log(obj_symptoms)
-console.log(isTrue)
-
 
 //Symptoms
 //if you have two trues, it can be you have diabetes
@@ -28,14 +23,16 @@ const symptom_risk = new Rule({
     then: (facts) => {
         if (isTrue.length >= 2) {
             symptom_risk_fact = {
-                message: facts.result.symptom_result = 'if 2 or more statements are true, you can be indicated as having diabetes',
-                status: true
+                message: facts.result.symptom_result.message = 'if 2 or more statements are true, you can be indicated as having diabetes',
+                status: facts.result.symptom_result.status = true,
+                score: facts.result.symptom_result.score = 25
             }
             return symptom_risk_fact
         } else {
             symptom_risk_fact = {
-                message: facts.result.symptom_result = 'You may have no diabetes',
-                status: true
+                message: facts.result.symptom_result.message = 'You may have no diabetes, because you dont have more than 2 symptoms',
+                status: facts.result.symptom_result.status = false,
+                score: facts.result.symptom_result.score = 0
             }
             return symptom_risk_fact
         }
@@ -53,13 +50,15 @@ const diabetes_parent_risk = new Rule({
         if (facts.hasDiabetesParent === true) {
             diabetes_parent_risk_fact = {
                 message: facts.result.parent_risk.message = "Beware, If your parent is diabetes, then you could be having diabetes..",
-                status: facts.result.parent_risk.status = true
+                status: facts.result.parent_risk.status = true,
+                score: facts.result.parent_risk.score = 25
             }
             return diabetes_parent_risk_fact
         } else {
             diabetes_parent_risk_fact = {
                 message: facts.result.parent_risk.message = "You likely have no diabetes Type 1..",
-                status: facts.result.parent_risk.status = false
+                status: facts.result.parent_risk.status = false,
+                score: facts.result.parent_risk.score = 0
             }
             return diabetes_parent_risk_fact
         }
@@ -69,7 +68,7 @@ const diabetes_parent_risk = new Rule({
 
 //MED TEST
 //DIAGNOSTIC TESTS
-//DIAGNOSTIC test  Fasting Plasma Glucose 8 hours fasting
+//DIAGNOSTIC test Fasting Plasma Glucose 8 hours fasting
 // Kadar gula darah normal: di bawah 100 mg/dL
 // Pradiabetes: 100-125 mg/dL
 // Diabetes di atas 125 mg/dL
@@ -83,19 +82,22 @@ const fpg = new Rule({
         if (facts.medtest.fpg >= 125) {
             fpg_fact = {
                 message: facts.result.test_result.fpg.message = 'It is above normal!, Sorry you have diabetes',
-                status: facts.result.test_result.fpg.status = 2
+                status: facts.result.test_result.fpg.status = 2,
+                score: facts.result.test_result.fpg.score = 25
             }
             return fpg_fact
         } else if (facts.medtest.fpg >= 100 && facts.medtest.fpg <= 125) {
             fpg_fact = {
                 message: facts.result.test_result.fpg.message = 'Be careful! you may have Diabetes! glucose between 100 and 125 is diagnosed to have paradiabetes',
-                status: facts.result.test_result.fpg.status = 1
+                status: facts.result.test_result.fpg.status = 1,
+                score: facts.result.test_result.fpg.score = 16.67
             }
             return fpg_fact
         } else {
             fpg_fact = {
                 message: facts.result.test_result.fpg.message = 'Glucose above 60 is normal. If it is below, check to the doctor',
-                status: facts.result.test_result.fpg.status = 0
+                status: facts.result.test_result.fpg.status = 0,
+                score: facts.result.test_result.fpg.score = 0
             }
         }
     }
@@ -116,19 +118,22 @@ const gthae = new Rule({
         if (facts.medtest.gthae >= 200) {
             gthae_facts = {
                 message: facts.result.test_result.gthae.message = 'It is above normal!, Sorry you have diabetes',
-                status: facts.result.test_result.gthae.status = 2
+                status: facts.result.test_result.gthae.status = 2,
+                score: facts.result.test_result.gthae.score = 25
             }
             return gthae_facts
         } else if (facts.medtest.fpg >= 140 && facts.medtest.fpg <= 199) {
             gthae_facts = {
                 message: facts.result.test_result.gthae.message = 'Be careful! you may have Diabetes! glucose between 140 and 199 is diagnosed to have paradiabetes, for this test',
-                status: facts.result.test_result.gthae.status = 1
+                status: facts.result.test_result.gthae.status = 1,
+                score: facts.result.test_result.gthae.score = 16.67
             }
             return gthae_facts
         } else {
             gthae_facts = {
-                message: facts.result.test_result.gthae.message = 'Glucose under 140 is normal. If it is below, check to the doctor',
-                status: facts.result.test_result.gthae.status = 0
+                message: facts.result.test_result.gthae.message = 'Glucose under 140 is normal.',
+                status: facts.result.test_result.gthae.status = 0,
+                score: facts.result.test_result.gthae.score = 0
             }
             return gthae_facts
         }
@@ -136,39 +141,47 @@ const gthae = new Rule({
 
 })
 
-//if you got diabetes 
-const calc = new Rule({
-    name: 'pople who defintely have diabetes',
+//calculation
+const overallResult = new Rule({
+    name: 'calculating final result',
     when: [
-        (facts) => facts.hasDiabetesParent === true,
-        (facts) => facts.result.test_result.gthae.status === 2,
-        (facts) => facts.result.test_result.fpg.status === 2
+        (facts) => facts.result.percentage === ''
     ],
     then: (facts) => {
-        if (facts.hasDiabetesParent === true && facts.result.test_result.gthae.status === 2 && facts.result.test_result.fpg.status === 2) {
-            return facts.result.final_result = 'You definitely have Diabetes! go check the doctor!'
-        } else if (facts.hasDiabetesParent === true && facts.result.test_result.gthae.status === 1 && facts.result.test_result.fpg.status === 2) {
-            return
-        } else {
+        let calc =
+            parseInt(facts.result.symptom_result.score) +
+            parseInt(facts.result.parent_risk.score) +
+            parseInt(facts.result.test_result.gthae.score) +
+            parseInt(facts.result.test_result.fpg.score);
 
+        console.log('jangan cepat marah ', calc)
+
+        if (calc >= 75 && calc <= 100) {
+            return facts.result.final_result = 'You definitely have Diabetes! go check the doctor!', facts.result.percentage = calc
+        } else if (calc > 25 && calc < 75) {
+            return facts.result.final_result = 'Afraid of having paradiabetes, but better if check the doctor!', facts.result.percentage = calc
+        } else if (calc <= 25) {
+            return facts.result.final_result = 'Dont worry you may not have diabetes, but better if check the doctor!', facts.result.percentage = calc
+        } else {
+            return facts.result.final_result = 'I hope you are okay!, stay fit and live healthy', facts.result.percentage = calc
         }
 
     }
 })
 
-
 //eval
-const evaluation = async (callback) => {
+const evaluation = async () => {
     const rools = new Rools()
-    await rools.register([diabetes_parent_risk, fpg, gthae, symptom_risk, calc])
-    await rools.evaluate(facts)
-    console.log(await rools.evaluate(facts))
-    return callback(facts)
+    try {
+        await rools.register([diabetes_parent_risk, fpg, gthae, symptom_risk, overallResult])
+        await rools.evaluate(facts)
+        console.log(await rools.evaluate(facts))
+        return facts
+    } catch (error) {
+        return facts
+    }
+
 }
 
-evaluation((res) => {
-    console.log(JSON.stringify(res))
-})
 
-
-console.log(facts)
+module.exports = { evaluation }
