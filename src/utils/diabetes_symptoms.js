@@ -61,7 +61,7 @@ const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, 
     return callback(parameters)
 }
 
-//get the symtoms
+// get the symtoms
 // setSymptoms(true, true, true, true, true, true, false, false, false, true, (res) => {
 //     console.log(res)
 // })

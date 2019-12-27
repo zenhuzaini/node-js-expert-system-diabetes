@@ -1,0 +1,125 @@
+<h2>Diabetes Test</h2>
+<form id="questionforms" name="questionforms">
+    <div class="form-group row">
+        <label for="inputState" class="col-sm-3 col-form-label">Have Diabetic Parent</label>
+        <div class="col-sm-9">
+            <select id="parent-value" required class="form-control">
+                <option selected disabled>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+
+    <hr>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="s1">S1</label>
+            <select id="s1" class="form-control" required>
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="s2">S2</label>
+            <select id="s2" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="s3">S3</label>
+            <select id="s3" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="s4">S4</label>
+            <select id="s4" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="s5">S5</label>
+            <select id="s5" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="s6">S6</label>
+            <select id="s6" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="s7">S7</label>
+            <select id="s7" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="s8">S8</label>
+            <select id="s8" class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="s9">S9</label>
+            <select id="s9" class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="s10">S10</label>
+            <select id="s10" required class="form-control">
+                <option disabled selected>Choose...</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group row">
+        <label for="fpg" class="col-sm-2 col-form-label">FPG TEST</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="fpg" name="fpd" placeholder="fpg test" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="gthae" class="col-sm-2 col-form-label">gthae TEST</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" id="gthae" name="gthae" placeholder="fpgae test">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+<p id="results"></p>

@@ -1,26 +1,43 @@
 const { Rule, Rools } = require('rools')
 const symptoms = require('./diabetes_symptoms')
 
-//get the values
-const facts = symptoms.setSymptoms(false, 300, 400, true, false, false, false, false, false, false, false, false, false, (res) => {
-    return res
-});
+let facts = ''
+const getvalues = (p, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) => {
+    const getvalues = symptoms.setSymptoms(p, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, (res) => {
+        return res
+    });
+    facts = getvalues
+    return facts
+}
 
-//get the true values from symptom value
-const obj_symptoms = Object.values(facts.symptoms);
-const isTrue = obj_symptoms.filter((values) => {
-    return values == true
-})
+// getvalues(false, 300, 400, true, false, false, false, false, false, false, false, false, false)
+
+
+//get the values
+// let facts = 
+// symptoms.setSymptoms(false, 300, 400, true, false, false, false, false, false, false, false, false, false, (res) => {
+//     return res
+// });
+
+
 
 //Symptoms
 //if you have two trues, it can be you have diabetes
 var symptom_risk_fact = ''
+let isTrue = ''
 const symptom_risk = new Rule({
     name: 'all symptoms risks',
     when: [
-        (facts) => isTrue
+        (facts) => facts.symptoms
     ],
     then: (facts) => {
+
+        //get the true values from symptom value
+        const obj_symptoms = Object.values(facts.symptoms);
+        isTrue = obj_symptoms.filter((values) => {
+            return values == true
+        })
+
         if (isTrue.length >= 2) {
             symptom_risk_fact = {
                 message: facts.result.symptom_result.message = 'if 2 or more statements are true, you can be indicated as having diabetes',
@@ -44,10 +61,10 @@ var diabetes_parent_risk_fact = ''
 const diabetes_parent_risk = new Rule({
     name: 'detecting diabetes if parent',
     when: [
-        (facts) => facts.hasDiabetesParent === true || facts.hasDiabetesParent === false
+        (facts) => facts.hasDiabetesParent == true || facts.hasDiabetesParent == false
     ],
     then: (facts) => {
-        if (facts.hasDiabetesParent === true) {
+        if (facts.hasDiabetesParent == true) {
             diabetes_parent_risk_fact = {
                 message: facts.result.parent_risk.message = "Beware, If your parent is diabetes, then you could be having diabetes..",
                 status: facts.result.parent_risk.status = true,
@@ -99,6 +116,7 @@ const fpg = new Rule({
                 status: facts.result.test_result.fpg.status = 0,
                 score: facts.result.test_result.fpg.score = 0
             }
+            return fpg_fact
         }
     }
 })
@@ -154,10 +172,10 @@ const overallResult = new Rule({
             parseInt(facts.result.test_result.gthae.score) +
             parseInt(facts.result.test_result.fpg.score);
 
-        console.log('jangan cepat marah ', calc)
+        // console.log('jangan cepat marah ', calc)
 
         if (calc >= 75 && calc <= 100) {
-            return facts.result.final_result = 'You definitely have Diabetes! go check the doctor!', facts.result.percentage = calc
+            return facts.result.final_result = 'OMG! You definitely have Diabetes! go check the doctor!', facts.result.percentage = calc
         } else if (calc > 25 && calc < 75) {
             return facts.result.final_result = 'Afraid of having paradiabetes, but better if check the doctor!', facts.result.percentage = calc
         } else if (calc <= 25) {
@@ -172,16 +190,29 @@ const overallResult = new Rule({
 //eval
 const evaluation = async () => {
     const rools = new Rools()
-    try {
-        await rools.register([diabetes_parent_risk, fpg, gthae, symptom_risk, overallResult])
-        await rools.evaluate(facts)
-        console.log(await rools.evaluate(facts))
-        return facts
-    } catch (error) {
-        return facts
-    }
 
+    try {
+        await rools.register([symptom_risk, fpg, gthae, diabetes_parent_risk, overallResult])
+        await rools.evaluate(facts)
+        // console.log(await rools.evaluate(facts))
+        return facts
+        //return console.log(facts)
+    } catch (error) {
+        //return console.log(error)
+        return error
+    }
 }
 
+//call set paramater function and evaluation functions
+const finalresult = async (p, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, ) => {
+    try {
+        await getvalues(p, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10)
+        const res = await evaluation()
+        return res
+    } catch (error) {
+        return error
+    }
+}
 
-module.exports = { evaluation }
+// finalresult(false, 300, 400, true, false, false, false, false, false, false, false, false, false)
+module.exports = { finalresult }
