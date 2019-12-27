@@ -64,9 +64,10 @@ app.get('/evaluation', async (req, res) => {
     const { dp, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10,
         fpg, gthae } = values
 
-    if (!dp || !s1 || !s2 || !s3 || !s4 || !s5 || !s6 || !s7 || !s8 || !s9 || !s10 || !fpg || !gthae) {
-        return res.send({ error: 'you have to make sure that the query string is correct' })
-    }
+    // if (!dp || !s1 || !s2 || !s3 || !s4 || !s5 || !s6 || !s7 || !s8 || !s9 || !s10 || !fpg || !gthae) {
+    //     return res.send({ error: 'you have to make sure that the query string is correct' })
+    // }
+
     //const result = await expert.finalresult(true, 300, 400, false, false, false, false, false, false, false, false, false, false)
     const result = await expert.finalresult(dp, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10)
 
