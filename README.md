@@ -5,6 +5,12 @@ Rools is a rule engine library that can be used for expert system
 
 Module used = Rools -> https://www.npmjs.com/package/rools
 
+
+How to start
+1. npm install
+2. npm start
+3. access localhost:1996
+
 This expert system is built for detecting Diabetes based on these 4 aspects
 1. Symtoms -> there are 10 symptoms and 2 medical tests.
 2. Checking wheter parents have diabetic history
