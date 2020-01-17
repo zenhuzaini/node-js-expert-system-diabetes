@@ -1,14 +1,26 @@
 //symptoms
-// s1 Sering merasa haus.
-// s2 Sering buang air kecil, terutama di malam hari.
-// s3 Sering merasa sangat lapar.
-// s4 Turunnya berat badan tanpa sebab yang jelas.
-// s5 Berkurangnya massa otot.
-// s6 Terdapat keton dalam urine. Keton adalah produk sisa dari pemecahan otot dan lemak akibat tubuh tidak dapat menggunakan gula sebagai sumber energi.
-// s7 Lemas.
-// s8 Pandangan kabur.
-// s9 Luka yang sulit sembuh.
-// s10 Sering mengalami infeksi, misalnya pada gusi, kulit, vagina, atau saluran kemih.
+// increased hunger
+// 
+
+//
+// 
+// 
+// 
+// 
+// 
+//
+
+
+// s1 increased thirst (Sering merasa haus.
+// s2 frequent urination (Sering buang air kecil, terutama di malam hari.
+// s3 increased hunger (Sering merasa sangat lapar.
+// s4 unintentional weight loss (Turunnya berat badan tanpa sebab yang jelas.
+// s5 Very dry skin
+// s6 Tingling or numbness in hands or feet
+// s7 extreme fatigue / Tiredness (Lemas.
+// s8 blurry vision (Pandangan kabur.
+// s9 sores that don’t heal ( Luka yang sulit sembuh.
+// s10 More infections than usual  (Sering mengalami infeksi, misalnya pada gusi, kulit, vagina, atau saluran kemih.
 
 const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, callback) => {
     let parameters = {
@@ -45,12 +57,12 @@ const setSymptoms = (hasDiabetesParent, fpg, gthae, s1, s2, s3, s4, s5, s6, s7, 
                 fpg: {
                     status: '',
                     message: '',
-                    score: ''
+                    score: 0
                 },
                 gthae: {
                     status: '',
                     message: '',
-                    score: ''
+                    score: 0
                 }
             },
             final_result: '',
