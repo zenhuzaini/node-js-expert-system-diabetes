@@ -5,6 +5,9 @@ Rools is a rule engine library that can be used for expert system
 
 Module used = Rools -> https://www.npmjs.com/package/rools
 
+See complete documentation here:
+https://docs.google.com/document/d/1S0MOIo2WxfIlw1Bqwukt8xEGVtnWrpmK7xbBnCelRPQ/edit?usp=sharing
+
 
 How to start
 1. npm install
@@ -65,3 +68,4 @@ This expert system is created based on these resources :
 - https://www.id.wikihow.com/Mengetahui-Apakah-Anda-Menderita-Diabetes
 - https://www.webmd.com/diabetes/how-sugar-affects-diabetes#1
 - https://www.webmd.com/diabetes/diagnosing-type-2-diabetes#1
+https://www.cdc.gov/media/presskits/aahd/diabetes.pdf
