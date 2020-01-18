@@ -65,12 +65,13 @@ questionsform.addEventListener('submit', (e) => {
                         gthaeTest: res.result.test_result.gthae.message,
                     }
                 }
-                result_message.textContent = data.percentage
-                getParentTest.textContent = data.summary.parentTest
-                SymptomsTest.textContent = data.summary.symptomTest
-                fpgTest.textContent = data.summary.fpgTest
-                gthaeTest.textContent = data.summary.gthaeTest
-                theFinalResult.textContent = data.final_result
+
+                result_message.textContent = 'Percentage : ' + data.percentage + '%'
+                getParentTest.textContent = 'Parent Test Result : ' + data.summary.parentTest
+                SymptomsTest.textContent = 'Symptoms Test Results : ' + data.summary.symptomTest
+                fpgTest.textContent = 'FBS test Results : ' + data.summary.fpgTest
+                gthaeTest.textContent = 'THPG Test Results : ' + data.summary.gthaeTest
+                theFinalResult.textContent = 'Final Conclusion : ' + data.final_result
             })
         })
         .catch((err) => {

@@ -73,7 +73,7 @@ const diabetes_parent_risk = new Rule({
             return diabetes_parent_risk_fact
         } else {
             diabetes_parent_risk_fact = {
-                message: facts.result.parent_risk.message = "You likely have no diabetes Type 1..",
+                message: facts.result.parent_risk.message = "You likely have no diabetes",
                 status: facts.result.parent_risk.status = false,
                 score: facts.result.parent_risk.score = 0
             }
@@ -112,7 +112,7 @@ const fpg = new Rule({
             return fpg_fact
         } else {
             fpg_fact = {
-                message: facts.result.test_result.fpg.message = 'Glucose above 60 is normal. If it is below, check to the doctor',
+                message: facts.result.test_result.fpg.message = 'Glucose larger than equal 60 and lesser than 100 is normal. If it is below, check to the doctor',
                 status: facts.result.test_result.fpg.status = 0,
                 score: facts.result.test_result.fpg.score = 0
             }
@@ -175,11 +175,11 @@ const overallResult = new Rule({
         // console.log('jangan cepat marah ', calc)
 
         if (calc >= 75 && calc <= 100) {
-            return facts.result.final_result = 'OMG! You definitely have Diabetes! go check the doctor!', facts.result.percentage = calc
+            return facts.result.final_result = 'You definitely have Diabetes! go to the doctor!', facts.result.percentage = calc
         } else if (calc > 25 && calc < 75) {
-            return facts.result.final_result = 'Afraid of having paradiabetes, but better if check the doctor!', facts.result.percentage = calc
+            return facts.result.final_result = 'You are having paradiabetes, better go to the doctor!', facts.result.percentage = calc
         } else if (calc <= 25) {
-            return facts.result.final_result = 'Dont worry you may not have diabetes, but better if check the doctor!', facts.result.percentage = calc
+            return facts.result.final_result = 'You may be having paradiabetes , but better if check the doctor!', facts.result.percentage = calc
         } else {
             return facts.result.final_result = 'I hope you are okay!, stay fit and live healthy', facts.result.percentage = calc
         }
