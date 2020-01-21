@@ -140,7 +140,7 @@ const gthae = new Rule({
                 score: facts.result.test_result.gthae.score = 25
             }
             return gthae_facts
-        } else if (facts.medtest.fpg >= 140 && facts.medtest.fpg <= 199) {
+        } else if (facts.medtest.gthae >= 140 && facts.medtest.gthae <= 199) {
             gthae_facts = {
                 message: facts.result.test_result.gthae.message = 'Be careful! you may have Diabetes! glucose between 140 and 199 is diagnosed to have paradiabetes, for this test',
                 status: facts.result.test_result.gthae.status = 1,
